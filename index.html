@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%F0%9F%9B%92</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/storage.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+  </head>
+  <body data-page="dashboard" data-title="Dashboard">
+    <div id="page">
+      <div class="page-head">
+        <div class="page-head__text">
+          <h2>Welcome back, Suresh 👋</h2>
+          <p>Here's what's happening at your store today.</p>
+        </div>
+        <div class="page-actions">
+          <a class="btn btn--ghost" href="reports.html">View Reports</a>
+          <a class="btn btn--primary" href="pos.html">New Sale</a>
+        </div>
+      </div>
+
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <div class="dash-grid">
+        <div class="dash-col">
+          <div class="card">
+            <div class="card__head">
+              <h3>Sales — last 7 days</h3>
+              <span class="chart-legend-inline"><span><i style="background:var(--primary)"></i>Daily sales</span></span>
+            </div>
+            <div class="card__body" id="salesChart"></div>
+          </div>
+          <div class="card">
+            <div class="card__head">
+              <h3>Revenue — last 6 months</h3>
+              <span class="chart-legend-inline"><span><i style="background:var(--secondary)"></i>Revenue</span></span>
+            </div>
+            <div class="card__body" id="revenueChart"></div>
+          </div>
+        </div>
+
+        <div class="dash-col">
+          <div class="card">
+            <div class="card__head"><h3>Top-selling products</h3></div>
+            <div class="card__body" id="topProducts"></div>
+          </div>
+          <div class="card">
+            <div class="card__head">
+              <h3>Low-stock alerts</h3>
+              <a class="btn btn--sm btn--ghost" href="inventory.html">Manage</a>
+            </div>
+            <div class="card__body" id="lowStock"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card__head">
+            <h3>Recent orders</h3>
+            <a class="btn btn--sm btn--ghost" href="orders.html">All orders</a>
+          </div>
+          <div class="card__body" id="recentOrders"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><h3>Recent activity</h3></div>
+          <div class="card__body" id="recentActivity"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

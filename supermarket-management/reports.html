@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP here also covers file:// use; header-only policies live in .htaccess / _headers / vercel.json (see SECURITY.md) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; font-src 'self' file:; connect-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Reports</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%F0%9F%9B%92</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/version.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/reports.js" defer></script>
+  </head>
+  <body data-page="reports" data-title="Reports">
+    <div id="page">
+      <div class="page-head">
+        <div class="page-head__text">
+          <h2>Reports</h2>
+          <p>Sales, profit, inventory and expense analytics.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn--ghost" id="exportBtn">Export CSV</button>
+          <button class="btn btn--ghost" id="printBtn">Print</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__body">
+          <div class="toolbar">
+            <label class="text-muted nowrap" style="align-self:center">From</label>
+            <input class="form-control" type="date" id="fromDate" />
+            <label class="text-muted nowrap" style="align-self:center">To</label>
+            <input class="form-control" type="date" id="toDate" />
+            <select class="select" id="preset">
+              <option value="7">Last 7 days</option>
+              <option value="30" selected>Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="365">Last 12 months</option>
+            </select>
+            <div class="toolbar__spacer"></div>
+            <select class="select" id="filterCategory"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-kpis section-gap" id="kpis"></div>
+
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card__head"><h3>Sales trend</h3></div>
+          <div class="card__body" id="salesTrend"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><h3>Sales by category</h3></div>
+          <div class="card__body" id="catChart"></div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="card">
+          <div class="card__head"><h3>Top products by revenue</h3></div>
+          <div class="card__body" id="topProducts"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><h3>Profit &amp; loss summary</h3></div>
+          <div class="card__body" id="pnl"></div>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card__head"><h3>Expense breakdown</h3></div>
+        <div class="card__body" id="expenseBreak"></div>
+      </div>
+    </div>
+  </body>
+</html>

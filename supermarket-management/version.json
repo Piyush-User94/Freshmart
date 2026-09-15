@@ -1,0 +1,25 @@
+{
+  "name": "supermarket-management",
+  "displayName": "Supermarket Management Admin",
+  "version": "1.1.0",
+  "channel": "stable",
+  "buildDate": "2026-09-04",
+  "schema": 1,
+  "stack": ["HTML5", "CSS3", "JavaScript (ES6+)"],
+  "dependencies": {},
+  "storage": "localStorage (prefix: sm_)",
+  "modules": [
+    "dashboard",
+    "pos",
+    "products",
+    "categories",
+    "inventory",
+    "suppliers",
+    "customers",
+    "orders",
+    "employees",
+    "expenses",
+    "reports",
+    "settings"
+  ]
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP here also covers file:// use; header-only policies live in .htaccess / _headers / vercel.json (see SECURITY.md) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; font-src 'self' file:; connect-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Settings</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%F0%9F%9B%92</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/version.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/settings.js" defer></script>
+  </head>
+  <body data-page="settings" data-title="Settings">
+    <div id="page">
+      <div class="page-head">
+        <div class="page-head__text">
+          <h2>Settings</h2>
+          <p>Store profile, billing preferences and appearance.</p>
+        </div>
+        <div class="page-actions"><button class="btn btn--primary" id="saveBtn">Save Changes</button></div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="card">
+          <div class="card__head"><h3>Store Information</h3></div>
+          <div class="card__body" id="storeForm"></div>
+        </div>
+
+        <div class="dash-col">
+          <div class="card">
+            <div class="card__head"><h3>Business Settings</h3></div>
+            <div class="card__body" id="bizForm"></div>
+          </div>
+
+          <div class="card">
+            <div class="card__head"><h3>Appearance</h3></div>
+            <div class="card__body">
+              <label class="form-label">Theme</label>
+              <div class="theme-switch" id="themeSwitch">
+                <div class="theme-opt" data-theme="light"><div class="swatch swatch--light"></div>Light</div>
+                <div class="theme-opt" data-theme="dark"><div class="swatch swatch--dark"></div>Dark</div>
+              </div>
+              <label class="flex center gap-sm" style="margin-top:16px;cursor:pointer">
+                <input type="checkbox" id="sidebarCollapsed" />
+                <span>Start with sidebar collapsed</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card__head"><h3>Data Management</h3></div>
+        <div class="card__body">
+          <p class="text-muted" style="margin-bottom:14px">This app stores all data locally in your browser (localStorage). No data is sent to any server. Frontend-only apps cannot provide real authentication or secure storage — do not store sensitive information here.</p>
+          <div class="flex gap-sm" style="flex-wrap:wrap">
+            <button class="btn btn--ghost" id="resetBtn">Reset to Demo Data</button>
+            <button class="btn btn--danger" id="clearBtn">Clear All Data</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-gap">
+        <div class="card__head"><h3>About</h3></div>
+        <div class="card__body" id="aboutBody"></div>
+      </div>
+    </div>
+  </body>
+</html>

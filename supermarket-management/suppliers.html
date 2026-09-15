@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP here also covers file:// use; header-only policies live in .htaccess / _headers / vercel.json (see SECURITY.md) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; font-src 'self' file:; connect-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Suppliers</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%F0%9F%9B%92</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/version.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/suppliers.js" defer></script>
+  </head>
+  <body data-page="suppliers" data-title="Suppliers">
+    <div id="page">
+      <div class="page-head">
+        <div class="page-head__text">
+          <h2>Suppliers</h2>
+          <p>Manage vendors, contacts and GST details.</p>
+        </div>
+        <div class="page-actions"><button class="btn btn--primary" id="addBtn">Add Supplier</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card__body">
+          <div class="toolbar">
+            <div class="search-box"><span></span><input type="search" id="search" placeholder="Search supplier, contact or GST…" /></div>
+            <select class="select" id="filterStatus">
+              <option value="">All status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr>
+                <th class="sortable" data-sort="id">ID</th>
+                <th class="sortable" data-sort="name">Supplier</th>
+                <th>Contact Person</th>
+                <th>Phone</th>
+                <th>GST</th>
+                <th>Status</th>
+                <th class="num">Actions</th>
+              </tr></thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

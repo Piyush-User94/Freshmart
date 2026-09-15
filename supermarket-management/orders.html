@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP here also covers file:// use; header-only policies live in .htaccess / _headers / vercel.json (see SECURITY.md) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; font-src 'self' file:; connect-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Orders</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%F0%9F%9B%92</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/version.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/invoice.js" defer></script>
+    <script src="js/orders.js" defer></script>
+  </head>
+  <body data-page="orders" data-title="Orders &amp; Sales">
+    <div id="page">
+      <div class="page-head">
+        <div class="page-head__text">
+          <h2>Orders &amp; Sales</h2>
+          <p>Review invoices, manage order status and refunds.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn--ghost" id="exportBtn">Export CSV</button>
+          <a class="btn btn--primary" href="pos.html">New Sale</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__body">
+          <div class="toolbar">
+            <div class="search-box"><span></span><input type="search" id="search" placeholder="Search invoice or customer…" /></div>
+            <select class="select" id="filterStatus">
+              <option value="">All order status</option>
+              <option>Pending</option><option>Processing</option><option>Completed</option><option>Cancelled</option><option>Refunded</option>
+            </select>
+            <select class="select" id="filterPay">
+              <option value="">All payments</option>
+              <option>Cash</option><option>UPI</option><option>Card</option><option>Other</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr>
+                <th>Invoice</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th class="num">Items</th>
+                <th class="num">Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th class="num">Actions</th>
+              </tr></thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

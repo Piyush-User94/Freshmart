@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP here also covers file:// use; header-only policies live in .htaccess / _headers / vercel.json (see SECURITY.md) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; font-src 'self' file:; connect-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>POS / Billing</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>%F0%9F%9B%92</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/version.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/invoice.js" defer></script>
+    <script src="js/pos.js" defer></script>
+  </head>
+  <body data-page="pos" data-title="POS / Billing">
+    <div id="page">
+      <div class="page-head">
+        <div class="page-head__text">
+          <h2>Point of Sale</h2>
+          <p>Ring up a sale, take payment and print the receipt.</p>
+        </div>
+      </div>
+
+      <div class="pos-grid">
+        <div class="card pos-products">
+          <div class="card__body">
+            <div class="search-box pos-search"><span></span><input type="search" id="posSearch" placeholder="Search products to add…" aria-label="Search products" /></div>
+            <div class="pos-cats" id="posCats"></div>
+            <div class="pos-product-grid" id="posGrid"></div>
+          </div>
+        </div>
+
+        <div class="card pos-cart">
+          <div class="card__head">
+            <h3>Current Sale</h3>
+            <button class="btn btn--sm btn--ghost" id="clearCart">Clear</button>
+          </div>
+          <div class="pos-cart__body">
+            <div class="field-inline" style="padding:14px 16px 0">
+              <select class="select" id="customer" aria-label="Select customer"></select>
+            </div>
+            <div class="pos-cart__items" id="cartItems"></div>
+            <div class="pos-cart__foot">
+              <div class="field-inline">
+                <input class="form-control" id="extraDiscount" type="number" min="0" step="1" placeholder="Extra discount ₹" aria-label="Extra discount" />
+              </div>
+              <div class="pos-summary" id="summary"></div>
+              <div class="pay-methods" id="payMethods">
+                <button class="pay-btn is-active" data-pay="Cash">Cash</button>
+                <button class="pay-btn" data-pay="UPI">UPI</button>
+                <button class="pay-btn" data-pay="Card">Card</button>
+                <button class="pay-btn" data-pay="Other">Other</button>
+              </div>
+              <button class="btn btn--primary btn--block" id="completeSale">Complete Sale</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

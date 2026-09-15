@@ -1,0 +1,42 @@
+# =============================================================
+# _headers — Netlify / Cloudflare Pages security headers
+#
+# Both platforms serve exclusively over HTTPS and redirect HTTP
+# automatically, which resolves the "HTTPS not enforced" finding without
+# extra configuration. They also do not expose a server version.
+# See SECURITY.md for the reasoning behind each directive.
+# =============================================================
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Robots-Tag: noindex, nofollow
+
+# HTML is revalidated every load so a new release is picked up immediately.
+/*.html
+  Cache-Control: no-cache, must-revalidate
+
+/
+  Cache-Control: no-cache, must-revalidate
+
+# Release metadata must never be served stale.
+/VERSION
+  Cache-Control: no-cache, must-revalidate
+  Content-Type: text/plain; charset=utf-8
+
+/version.json
+  Cache-Control: no-cache, must-revalidate
+
+# Assets are versioned by release rather than by filename hash, so keep the
+# cache short instead of immutable.
+/css/*
+  Cache-Control: public, max-age=3600
+
+/js/*
+  Cache-Control: public, max-age=3600
